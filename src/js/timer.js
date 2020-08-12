@@ -46,7 +46,7 @@ class CountdownTimer {
   secs(time) {
     return Math.floor((time % (1000 * 60)) / 1000);
   }
-  //? выдает ошибку этого метода
+  //? выдает ошибку из-за этого метода
   // pad(value) {
   //   return String(value).padStart(2, '0');
   // }
