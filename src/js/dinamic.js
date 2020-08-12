@@ -10,8 +10,10 @@ class CountdownTimer {
     let hours = 0;
     let mins = 0;
     let sec = 0;
-
+    console.log(this.selector);
     setInterval(() => {
+      console.log(this.selector);
+
       const currenData = this.targetDate - new Date();
       if (currenData >= 0) {
         days = Math.floor(currenData / (1000 * 60 * 60 * 24));
@@ -20,9 +22,11 @@ class CountdownTimer {
         );
         (mins = this.min(currenData)), (sec = this.secs(currenData));
       }
-      inserMarkup();
+      inserMarkup(this.selector);
     }, 1000);
-    function inserMarkup() {
+    function inserMarkup(selector) {
+      console.log(selector);
+
       const markUp = `<p>создается динамически из конструктора</p> <div class="timer" id="timer-1">
             <div class="field">
               <span class="value" data-value="days">${days}</span>
@@ -41,9 +45,10 @@ class CountdownTimer {
 
             <div class="field">
               <span class="value" data-value="secs">${sec}</span>
-              <span class="label">${this.selector}</span>
+              <span class="label">Second</span>
             </div>
           </div>`;
+      //   console.log(this);
       document.querySelector('body').innerHTML = markUp;
     }
   }
@@ -66,3 +71,9 @@ const test = new CountdownTimer({
   selector: '#dinamic',
   targetDate: new Date('August 30, 2020'),
 });
+
+// test.insertMarkup();
+// const test2 = new CountdownTimer({
+//   selector: '#dinamic2',
+//   targetDate: new Date('August 30, 2020'),
+// });
